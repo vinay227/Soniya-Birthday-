@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Soniya’s Birthday Surprise 🎂</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#ffe0f0;--bg2:#fff2c2;--card:#fff;--ink:#3a1a4a;--pri:#ff3d8b;--sec:#7c4dff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#2a1040;--bg2:#4a1a38;--card:#3b2056;--ink:#fff1fb}}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:'Baloo 2',system-ui,sans-serif;color:var(--ink);background:linear-gradient(135deg,#ff9ac8,#ffe27a,#8be9fd,#c4a5ff,#ff9ac8);background-size:400% 400%;animation:flow 12s ease infinite;min-height:100vh;display:flex;justify-content:center;padding:16px}
+#app{width:100%;max-width:560px;position:relative;z-index:2}
+.card{background:var(--card);border-radius:24px;padding:22px;box-shadow:0 10px 30px rgba(124,77,255,.2);text-align:center;margin-top:12px;animation:pop .4s}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes bob{50%{transform:translateY(-10px) rotate(6deg)}}
+h1{font-size:2.1rem;line-height:1.1;margin:6px 0;font-weight:800;background:linear-gradient(90deg,#ff3d8b,#ff9800,#00b894,#7c4dff);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{margin:4px 0 14px;font-size:1.5rem}
+.big{font-size:4rem;display:inline-block;animation:bob 1.6s infinite}
+p{margin:6px 0}
+input{font:inherit;font-size:1.2rem;padding:10px 14px;border-radius:14px;border:2px solid var(--sec);width:100%;text-align:center;background:transparent;color:inherit;margin:12px 0}
+button{font:inherit;font-weight:700;cursor:pointer}
+.go{background:var(--pri);color:#fff;border:0;border-radius:999px;padding:12px 28px;font-size:1.15rem;box-shadow:0 5px 0 #b3175c}
+.go:active{transform:translateY(4px);box-shadow:0 1px 0 #b3175c}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{--c:#ff3d8b;background:transparent;color:inherit;border:3px solid var(--c);border-radius:16px;padding:12px 6px;font-size:1rem;transition:.15s}
+.opt:nth-child(6n+2){--c:#ff9800}.opt:nth-child(6n+3){--c:#00b894}.opt:nth-child(6n+4){--c:#7c4dff}.opt:nth-child(6n+5){--c:#0fa3e8}.opt:nth-child(6n+6){--c:#e91e63}
+.opt:hover{transform:scale(1.05) rotate(-1deg);background:var(--c);color:#fff}
+.opt span{display:block;font-size:2rem}
+.roast{margin-top:14px;font-size:1.1rem;min-height:3em;color:var(--sec);font-weight:700}
+.bar{height:10px;background:rgba(124,77,255,.2);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pri),var(--sec));transition:width .4s}
+.row{display:flex;justify-content:space-between;text-align:left;gap:8px;padding:8px 0;border-bottom:2px dashed rgba(124,77,255,.3)}
+.row b{color:var(--pri)}
+.wish{background:linear-gradient(135deg,#fff3,#fff0);border-radius:16px;padding:12px;margin-top:14px;font-size:1.05rem}
+.sm{background:transparent;border:2px solid var(--sec);color:inherit;border-radius:999px;padding:8px 18px;margin:8px 4px 0}
+canvas{position:fixed;inset:0;pointer-events:none;z-index:5;width:100%;height:100%}
+@keyframes flow{50%{background-position:100% 50%}}
+.lbl{font-weight:800;color:var(--sec);margin-top:10px}
+.cd{display:flex;gap:8px;justify-content:center;margin:8px 0 14px}
+.u{color:#fff;border-radius:14px;padding:8px 4px;min-width:64px;font-size:.8rem;background:#ff3d8b;box-shadow:0 4px 0 rgba(0,0,0,.2)}
+.u:nth-child(2){background:#ff9800}.u:nth-child(3){background:#00b894}.u:nth-child(4){background:#7c4dff}
+.u b{display:block;font-size:1.9rem;line-height:1.1}
+.bday{font-size:1.6rem;font-weight:800;color:var(--pri);animation:bob 1s infinite}
+</style></head><body>
+<canvas id="cv"></canvas>
+<div id="app"></div>
+<script>
+const Q=[
+{k:"Movie",t:"🎬 Date Night Movie Konsi?",o:[
+["💕","DDLJ","Palat ke dekhogi toh main hi khada hoon, Simran! 😍"],
+["🎓","3 Idiots","All is well — jab tak tum mere saath ho! 😎"],
+["🤡","Hera Pheri","Popcorn tum khana, hansi main sambhal lunga 😂"],
+["🚂","Jab We Met","Tum apni favourite ho… aur meri bhi! 💃"],
+["🤗","K3G","Rona-dhona full, par hug bhi full! 🤗"],
+["🏹","Baahubali","Tumhare liye toh main Kattappa se bhi lad jaunga 🗡️"]]},
+{k:"Flowers",t:"💐 Aaj Konse Phool Chahiye?",o:[
+["🌹","Red Roses","Kaante mere liye, khushboo tumhare liye 🌹😂"],
+["🌻","Sunflowers","Tum meri sunshine ho, main tumhara solar panel ☀️"],
+["🌷","Tulips","Fancy ho gayi! Budget bhi fancy ho gaya mera 💸😅"],
+["🌼","Genda Phool","Desi taste! Sasta, sundar aur tikaau 😂"],
+["🤍","Mogra","Khushboo aisi ki mera dil hi behek jaye 😜"],
+["💐","Poora Bouquet","Dukaan hi utha laata hoon, bas tum haan bolo! 🛍️"]]},
+{k:"Chocolate",t:"🍫 Sweet Tooth Alert!",o:[
+["🍫","Dairy Milk Silk","Silk khaoge ya mujhe pighlaoge? 😍"],
+["🍬","KitKat","Have a break, have a KitKat — par date se break nahi! 😂"],
+["🟤","Ferrero Rocher","Ambassador ka reception? Nahi, sirf Soniya ka! 👑"],
+["⭐","5 Star","Diet band, 5 Star chalu. Vinay ko bhi ek bite dena! 😋"],
+["🍫","Munch","Crunchy! Meri baatein bhi utni hi crunchy lagti hain na? 😜"],
+["🎂","Choco Cake","Chocolate cake ka sabse bada piece tumhara, bacha hua mera 😝"]]},
+{k:"Gift",t:"🎁 Surprise Gift Konsa?",o:[
+["🧸","Teddy Bear","Teddy ko hug karogi, Vinay jealous ho jayega 😤🧸"],
+["💎","Earrings","Chamak tumhari, bill mera 💸✨"],
+["📸","Photo Frame","Hamari cute photos — meri sabse best wali pakka! 😎"],
+["💌","Love Letter","Handwritten! Spelling mistakes ko pyaar samajh lena 😅"],
+["🧴","Perfume","Khushboo teri, deewana main 😜"],
+["🛍️","Shopping Date","Bag main uthaunga, dil tum jeetogi 😂"]]},
+{k:"Date",t:"💑 Date Plan Kya Ho?",o:[
+["🕯️","Candlelight Dinner","Romantic! Waiter ko tip dena mat bhoolna 😂"],
+["🛵","Long Drive","Petrol mera, playlist tumhari, ice cream bhi mera 🍦"],
+["💦","Golgappe Date","Pehle 10 golgappe, phir proposal dobara 😂"],
+["☕","Chai + Barish","Barish, chai aur tum — kya baat hai! 🌧️"],
+["🎂","Cake Cutting","Cake pe tumhara naam, poore cake pe mera haq 😝"],
+["📞","Midnight Call","12 baje pehla wish mera — alarm laga ke rakha hai ⏰❤️"]]}
+];const A=document.getElementById("app");let name="Soniya",pick=[],i=0;
+function start(){pick=[];i=0;A.innerHTML=`<div class="card"><div class="big">🎂</div><h1>Soniya Sharma, Birthday Alert! 🚨</h1><div class="lbl">⏳ Birthday Countdown · 26 Oct 2026</div><div class="cd" id="cd"></div><p>Ek Very Important Person ka din aa raha hai.<br>Tumhare liye ek special surprise ready hai! 🎁</p><button class="go" onclick="begin()">Party Shuru Karo 🎉</button></div>`;}
+function begin(){name="Soniya";boom();show();}
+function show(){const q=Q[i];A.innerHTML=`<div class="card"><div class="bar"><i style="width:${i/Q.length*100}%"></i></div><p style="margin-top:10px">Question ${i+1} of ${Q.length}</p><h2>${q.t}</h2><div class="opts">${q.o.map((o,j)=>`<button class="opt" onclick="choose(${j})"><span>${o[0]}</span>${o[1]}</button>`).join("")}</div><div class="roast" id="r">Choose wisely, ${name}… Vinay dekh raha hai 👀</div></div>`;}
+function choose(j){const o=Q[i].o[j];pick.push(o);document.getElementById("r").innerHTML=o[2]+"<br>🤝 "+["Maine bhi yahi choose karke set kiya hai — bilkul match ho raha hai! — Vinay","Wah! Maine bhi yahi pick karke rakha hai, bilkul same! — Vinay","Match ho gaya! Maine bhi yahi set kiya hai 😍 — Vinay","Same pinch! Maine bhi yahi choose kiya hai, full match! — Vinay"][Math.floor(Math.random()*4)];boom(40);
+document.querySelectorAll(".opt").forEach(b=>b.disabled=true);setTimeout(()=>{i++;i<Q.length?show():end()},2900);}
+function end(){boom(160);setTimeout(()=>boom(120),600);
+A.innerHTML=`<div class="card"><div class="big">🥳</div><h1>${isB()?"Happy Birthday, Soniya Sharma! 🎉":"Soniya Sharma, Gift List Ready! 🎁"}</h1><p>Official Wish List (Approved by Vinay 😎💖)</p>
+${pick.map((p,x)=>`<div class="row"><span>${Q[x].k}</span><b>${p[0]} ${p[1]}</b></div>`).join("")}
+<p><b>💘 Maine bhi bilkul yahi sab choose karke set kiya hai — 100% match! — Vinay</b></p><div class="wish">${isB()?"Aaj ke din tum 1 saal aur badi ho gayi, par tumhari hansi aur masti wahi hai! 😄":"Birthday abhi aaya nahi hai, par gift list pakki ho gayi! 😄 26 Oct ko milte hain, tab tak countdown dekhti raho ⏳"} Birthday pe diet ko chhutti, cake ko full attendance, aur selfie ko unlimited storage! 📸🍰<br><br>Khush raho, hansti raho, aur humesha aise hi dhamaal machati raho. Bahut saara pyaar & dher saari shubhkamnayein! 💖✨<br><br><i>P.S. Age is just a number… aur tumhara number toh bahut chhota hai! 😜</i><br><br><b>— Tumhara Vinay 😘❤️</b></div>
+<button class="sm" onclick="blast()">🎆 Fireworks!</button>${isB()?'<button class="sm" onclick="cake()">🕯️ Candle Bujhao</button>':""}<button class="sm" onclick="start()">🔁 Dobara</button></div>`;}
+function cake(){const b=document.querySelector(".big");b.textContent="💨";setTimeout(()=>{b.textContent="🎂";boom(220)},700);alert("Wish maango… par bataana mat! 🤫");}
+const cv=document.getElementById("cv"),c=cv.getContext("2d");let P=[],run=false;
+function size(){cv.width=innerWidth;cv.height=innerHeight}size();addEventListener("resize",size);
+function boom(n=120){const cols=["#ff3d8b","#7c4dff","#ffc400","#00c9a7","#ff7a00"];
+for(let k=0;k<n;k++)P.push({x:Math.random()*cv.width,y:-10,vx:Math.random()*4-2,vy:Math.random()*4+2,s:Math.random()*8+4,r:Math.random()*6,c:cols[k%5]});
+if(!run){run=true;tick()}}
+function tick(){c.clearRect(0,0,cv.width,cv.height);P.forEach(p=>{if(p.g)p.vy+=.12;p.x+=p.vx;p.y+=p.vy;p.r+=.15;c.save();c.translate(p.x,p.y);c.rotate(p.r);c.fillStyle=p.c;c.fillRect(-p.s/2,-p.s/2,p.s,p.s/2);c.restore()});
+P=P.filter(p=>p.y<cv.height+20);P.length?requestAnimationFrame(tick):(run=false)}
+function fw(x,y){const cols=["#ff3d8b","#7c4dff","#ffc400","#00c9a7","#ff7a00","#0fa3e8"],col=cols[Math.floor(Math.random()*6)];for(let k=0;k<70;k++){const a=Math.PI*2*k/70,s=Math.random()*5+2;P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,s:6,r:0,c:col,g:1})}if(!run){run=true;tick()}}
+function blast(){for(let k=0;k<10;k++)setTimeout(()=>fw(Math.random()*cv.width,Math.random()*cv.height*.6+40),k*350);boom(200)}
+const T=new Date(2026,9,26,0,0,0).getTime();let blasted=false;function isB(){return Date.now()>=T}
+function cdTick(){const d=T-Date.now(),el=document.getElementById("cd");
+if(d<=0){if(!blasted){blasted=true;blast();setInterval(()=>blast(),9000)}if(el)el.innerHTML='<div class="bday">🎉 IT’S BIRTHDAY TIME! 🎉</div>';return}
+if(el){const s=Math.floor(d/1000);el.innerHTML=[["Days",Math.floor(s/86400)],["Hours",Math.floor(s%86400/3600)],["Mins",Math.floor(s%3600/60)],["Secs",s%60]].map(x=>`<div class="u"><b>${x[1]}</b>${x[0]}</div>`).join("")}}
+setInterval(cdTick,1000);
+start();cdTick();
+</script></body></html>
